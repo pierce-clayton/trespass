@@ -2,7 +2,7 @@
 
 **Trespass**
 
-close repo
+clone repo
 
 run ```ruby db:migrate```
 
