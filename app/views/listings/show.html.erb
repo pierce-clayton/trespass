@@ -1,13 +1,15 @@
-
-  <div class='container'>
+<div class='hero-head'>
+  <div class='container has-text-centered'>
       <div class='title'>
-        <h1>Tresspass</h1>
+        <h1>Trespass</h1>
       </div>
       <div class='sub-title is-bold'>
         <h1><%= @listing.address.propertyname %></h1>
       </div>
     </div>
-  <div class='container'>
+</div>
+<div class='hero-body'>
+  <div class='container has-text-centered'>
     <div class='content'>
     <p>
     <strong>Address:</strong>
@@ -31,15 +33,19 @@
     <div>Allowed Activities: <%= @listing.allowed_activities %></div>
     </div>
   </div>
-  <div class='container'>
-    <span class="level-item" aria-label="nav buttons">
-      <%= link_to  '<i class="fas fa-list" aria-hidden="true"></i>'.html_safe, listing_comments_path(@listing.id) %>
-      <%= link_to  '<i class="fas fa-comments" aria-hidden="true"></i>'.html_safe, new_listing_comment_path(@listing.id) unless !current_user.rentals.map(&:listing).include?(@listing) || current_user.listings.include?(@listing) %>
-      <%= link_to  '<i class="fas fa-user-plus" aria-hidden="true"></i>'.html_safe, new_user_path if current_user.nil? %>
-      <%= link_to  '<i class="fas fa-sign-in-alt" aria-hidden="true"></i>'.html_safe, login_path if current_user.nil? %>
-      <%= link_to  '<i class="fas fa-sign-out-alt" aria-hidden="true"></i>'.html_safe, logout_path unless current_user.nil? %>
-      <%= link_to  '<i class="fas fa-home" aria-hidden="true"></i>'.html_safe, current_user unless current_user.nil? %>
-      <%= link_to '<i class="fas fa-credit-card" aria-hidden="true"></i>'.html_safe, {controller: :rentals, action: :new, user_id: @listing.address.user.id, listing_id: @listing.id} unless current_user.id == @listing.address.user.id %>
-    </span>
-  </div>
-  
+</div>
+<div class='hero-foot'>
+  <nav class='tabs'>
+    <div class='container'>
+      <span class="level-item" aria-label="nav buttons">
+        <%= link_to  '<i class="fas fa-list" aria-hidden="true"></i>'.html_safe, listing_comments_path(@listing.id) %>
+        <%= link_to  '<i class="fas fa-comments" aria-hidden="true"></i>'.html_safe, new_listing_comment_path(@listing.id) unless !current_user.rentals.map(&:listing).include?(@listing) || current_user.listings.include?(@listing) %>
+        <%= link_to  '<i class="fas fa-user-plus" aria-hidden="true"></i>'.html_safe, new_user_path if current_user.nil? %>
+        <%= link_to  '<i class="fas fa-sign-in-alt" aria-hidden="true"></i>'.html_safe, login_path if current_user.nil? %>
+        <%= link_to  '<i class="fas fa-sign-out-alt" aria-hidden="true"></i>'.html_safe, logout_path unless current_user.nil? %>
+        <%= link_to  '<i class="fas fa-home" aria-hidden="true"></i>'.html_safe, current_user unless current_user.nil? %>
+        <%= link_to '<i class="fas fa-credit-card" aria-hidden="true"></i>'.html_safe, {controller: :rentals, action: :new, user_id: @listing.address.user.id, listing_id: @listing.id} unless current_user.id == @listing.address.user.id %>
+      </span>
+    </div>
+  </nav>
+</div>  

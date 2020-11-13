@@ -1,14 +1,15 @@
-<section class='hero'>
-  <div class='container'>
+<div class='hero-head'>
+  <div class='container has-text-centered'>
     <div class='title'>
-      <h1>Tresspass</h1>
+      <h1>Trespass</h1>
     </div>
     <div class='sub-title is-bold'>
       <h1>Rental Details</h1>
     </div>
   </div>
-
-  <div class='container'>
+</div>
+<div class='hero-body'>
+  <div class='container has-text-centered'>
     <div class='text'><strong>Rental details</strong></div>
     <div class='text'>Hosted by <strong><%= @rental.listing.address.user.username %></strong></div>
     <div class='text'><%= @rental.listing.address.add_l1 %></div>
@@ -25,6 +26,9 @@
     <div class='text'><strong>Number of vehicles</strong> <%= @rental.vehicles %></div>
     <div class='text'><strong>Rental Start Date</strong> <%= @rental.start_date %></div>
     <div class='text'><strong>Rental End Date</strong> <%= @rental.end_date %></div>
+</div>
+<div class='hero-foot'>
+  <nav class='tabs'>
     <div class='container'>
         <span class="level-item" aria-label="nav buttons">
           <%= link_to  '<i class="fas fa-newspaper" aria-hidden="true"></i>'.html_safe, listing_path(@rental.listing.id)  %>
@@ -33,5 +37,6 @@
           <%= link_to  '<i class="fas fa-search" aria-hidden="true"></i>'.html_safe, listings_path %>  
         </span>
       </div>
-  </div>
-</section>
+    </div>
+  </nav>
+</div>

@@ -1,23 +1,26 @@
-
+<div class='hero-head'>
   <div class='container'>
     <div class='title'>
-      <h1>Tresspass</h1>
+      <h1>Trespass</h1>
     </div>
     <div class='sub-title is-bold'>
       <h1>New Comment Page</h1>
     </div>
   </div>
-
-  <% if @comment.errors.any? %>
-    <div id="error_explanation">
-      <ul>
-      <% @comment.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class='container'>
+</div>
+<div class='hero-body'>
+  <div class='container has-text-centered'>
+    <% if @comment.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+        <% @comment.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+  <div class='container has-text-centered'>
     <%= form_for @comment do |f| %>
     <%= f.hidden_field :listing_id, value: params[:listing_id] %>
     <%= f.hidden_field :user_id, value: current_user.id %>
@@ -32,10 +35,15 @@
     <% end %>
     </div>
   </div>
+</div>
+<div class='hero-foot'>
+  <nav class='tabs'>
     <div class='container'>
       <span class="level-item" aria-label="nav buttons">
         <%= link_to  '<i class="fas fa-sign-in-alt" aria-hidden="true"></i>'.html_safe, login_path if current_user.nil? %>
         <%= link_to  '<i class="fas fa-sign-out-alt" aria-hidden="true"></i>'.html_safe, logout_path unless current_user.nil? %>
         <%= link_to  '<i class="fas fa-search" aria-hidden="true"></i>'.html_safe, listings_path %>
       </span>
-  </div>
+    </div>
+  </nav>
+</div>

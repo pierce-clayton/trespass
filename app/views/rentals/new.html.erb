@@ -1,14 +1,15 @@
-<section class='hero'>
-  <div class='container'>
+<div class='hero-head'>
+  <div class='container has-text-centered'>
     <div class='title'>
-      <h1>Tresspass</h1>
+      <h1>Trespass</h1>
     </div>
     <div class='sub-title is-bold'>
       <h1>New Rental</h1>
     </div>
   </div>
-
-  <div class='container'>
+</div>
+<div class='hero-body'>
+  <div class='container has-text-centered'>
     <% if @rental.errors.any? %>
       <div id="error_explanation">
         <ul>
@@ -19,7 +20,7 @@
       </div>
     <% end %>
   </div>
-  <div class='container'>
+  <div class='container has-text-centered'>
       <%= form_for @rental do |f| %>
     <div class='text'>
       <%= f.label :start_date, "Rental Start" %>
@@ -49,11 +50,15 @@
       <%= f.hidden_field :listing_id, value: @listing.id%>
       <%= f.submit %>
       <% end %>
-      <div class='container'>
-        <span class="level-item" aria-label="nav buttons">
-          <%= link_to  '<i class="fas fa-sign-out-alt" aria-hidden="true"></i>'.html_safe, logout_path unless current_user.nil? %>
-          <%= link_to  '<i class="fas fa-home" aria-hidden="true"></i>'.html_safe, current_user unless current_user.nil? %>
-        </span>
-      </div>
   </div>
-</section>
+</div>
+<div class='hero-foot'>
+  <nav class='tabs'>
+    <div class='container'>
+      <span class="level-item" aria-label="nav buttons">
+        <%= link_to  '<i class="fas fa-sign-out-alt" aria-hidden="true"></i>'.html_safe, logout_path unless current_user.nil? %>
+        <%= link_to  '<i class="fas fa-home" aria-hidden="true"></i>'.html_safe, current_user unless current_user.nil? %>
+      </span>
+    </div>
+  </nav>
+</div>

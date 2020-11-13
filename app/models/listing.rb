@@ -1,7 +1,7 @@
 class Listing < ApplicationRecord
   belongs_to :address
   has_many :rentals
-  has_many :comments, dependent: :destroy
+  has_many :comments
 
   validates :price, :avail_start, :avail_end, presence: true, eligibility: true
   validates :description, :allowed_activities, presence: true

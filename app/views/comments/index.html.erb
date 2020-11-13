@@ -1,14 +1,16 @@
 
-  <div class='container'>
-    <div class='container'>
+  <div class='hero-head'>
+    <div class='container has-text-centered'>
     <div class='title'>
-      <h1>Tresspass</h1>
+      <h1>Trespass</h1>
     </div>
     <div class='sub-title is-bold'>
       <h1>Listing Comments</h1>
     </div>
     </div>
-    <div class='container'>
+  </div>
+  <div class='hero-body'>
+    <div class='container has-text-centered'>
       <% @comments.each do |comment|%>
       <div class="box">
         <article class="media">
@@ -41,6 +43,9 @@
       </div>
       <% end %>
     </div>
+  </div>
+<div class='hero-foot'>
+  <nav class='tabs'>
       <div class='container'>
         <span class="level-item" aria-label="nav buttons">
           <%= link_to  '<i class="fas fa-user-plus" aria-hidden="true"></i>'.html_safe, new_user_path if current_user.nil? %>
@@ -50,4 +55,5 @@
           <%= link_to  '<i class="fas fa-campground" aria-hidden="true"></i>'.html_safe, new_user_address_path(current_user.id) unless current_user.nil? %>
         </span>
       </div>
-  </div>
+  </nav>
+</div>

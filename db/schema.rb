@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 2020_11_10_193339) do
 
   create_table "comments", force: :cascade do |t|
     t.string "description"
-    t.integer "user_id", null: false
-    t.integer "listing_id", null: false
+    t.integer "user_id"
+    t.integer "listing_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["listing_id"], name: "index_comments_on_listing_id"
@@ -68,8 +68,8 @@ ActiveRecord::Schema.define(version: 2020_11_10_193339) do
   end
 
   add_foreign_key "addresses", "users"
-  add_foreign_key "comments", "listings"
-  add_foreign_key "comments", "users"
+  add_foreign_key "comments", "listings", on_delete: :cascade
+  add_foreign_key "comments", "users", on_delete: :cascade
   add_foreign_key "listings", "addresses"
   add_foreign_key "rentals", "listings"
   add_foreign_key "rentals", "users"
