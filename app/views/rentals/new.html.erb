@@ -1,0 +1,59 @@
+<section class='hero'>
+  <div class='container'>
+    <div class='title'>
+      <h1>Tresspass</h1>
+    </div>
+    <div class='sub-title is-bold'>
+      <h1>New Rental</h1>
+    </div>
+  </div>
+
+  <div class='container'>
+    <% if @rental.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+        <% @rental.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+  <div class='container'>
+      <%= form_for @rental do |f| %>
+    <div class='text'>
+      <%= f.label :start_date, "Rental Start" %>
+    </div>
+    <div class='text'>
+      <%= f.date_field :start_date %>
+    </div>
+    <div class='text'>
+      <%= f.label :end_date, "Rental End" %>
+    </div>
+    <div class='text'>
+      <%= f.date_field :end_date %>
+    </div>
+    <div class='text'>
+      <%= f.label :souls, "How many people in total" %>
+    </div>
+    <div class='text'>
+      <%= f.number_field :souls %>
+    </div>
+    <div class='text'>
+      <%= f.label :vehicles, "How many vehicles" %>
+    </div>
+    <div class='text'>
+      <%= f.number_field :vehicles %>
+    </div>
+      <%= f.hidden_field :user_id%>
+      <%= f.hidden_field :listing_id, value: @listing.id%>
+      <%= f.submit %>
+      <% end %>
+      <div class='container'>
+        <span class="level-item" aria-label="nav buttons">
+          <%= link_to  '<i class="fas fa-sign-out-alt" aria-hidden="true"></i>'.html_safe, logout_path unless current_user.nil? %>
+          <%= link_to  '<i class="fas fa-home" aria-hidden="true"></i>'.html_safe, current_user unless current_user.nil? %>
+        </span>
+      </div>
+  </div>
+</section>

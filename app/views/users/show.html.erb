@@ -1,0 +1,99 @@
+<section class='hero'>
+  <div class='container'>
+    <div class='title'>
+      <h1>Tresspass</h1>
+    </div>
+    <div class='sub-title is-bold'>
+      <h1><%= @user.username %>'s profile page</h1>      
+    </div>
+  </div>
+  <% if @user.rentals.any? %>
+  <div class='container'>
+    <div class='sub-title'>
+      <h3><strong>Previous Rentals</strong></h3>
+    </div>
+      <% @user.rentals.each do |rental|%>
+        <div class="box">
+          <article class="media">
+            <div class="media-left">
+              <figure class="image is-64x64">
+                <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+              </figure>
+            </div>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                <strong><%= rental.listing.address.propertyname %></strong>
+                <br>
+                <small><%= rental.listing.address.city << ', ' << rental.listing.address.state%></small>
+                </p>
+              </div>
+              <nav class="level is-mobile">
+                <div class="level-left">
+                  <span class="level-item" aria-label="list property">
+                    <%= link_to  '<i class="fas fa-sign-out-alt" aria-hidden="true"></i>'.html_safe, logout_path unless current_user.nil? %>
+                  </span>
+                  <span class="level-item" aria-label="list property">
+                    <%= link_to  '<i class="fas fa-search" aria-hidden="true"></i>'.html_safe, listings_path %>
+                  </span>
+                  <span class="level-item" aria-label="list property">
+                    <%= link_to  '<i class="fas fa-history" aria-hidden="true"></i>'.html_safe, rental_path(rental.id) %>
+                  </span>
+                </div>
+              </nav>
+            </div>
+          </article>
+        </div>
+      <% end %>
+  </div>
+  <% end %>
+
+  <% if @user.addresses.any? %>
+  <div class='container'>
+    <div class='sub-title'>
+      <h3><strong>Current properties</strong></h3>
+    </div>
+      <% @user.addresses.each do |address|%>
+        <div class="box">
+          <article class="media">
+            <div class="media-left">
+              <figure class="image is-64x64">
+                <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+              </figure>
+            </div>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                <strong><%= address.propertyname %></strong>
+                <br>
+                <small><%= address.city << ', ' << address.state%></small>
+                </p>
+              </div>
+              <nav class="level is-mobile">
+                <div class="level-left">
+                  <span class="level-item" aria-label="list property">
+                    <%= link_to  '<i class="fas fa-sign" aria-hidden="true"></i>'.html_safe, new_user_address_listing_path(address.id, @user.id) %>
+                  </span>
+                  <span class="level-item" aria-label="list property">
+                    <%= link_to  '<i class="fas fa-clipboard" aria-hidden="true"></i>'.html_safe, user_address_listings_path(current_user, address) %>
+                  </span>
+                  <span class="level-item" aria-label="list property">
+                    <%= link_to  '<i class="fas fa-history" aria-hidden="true"></i>'.html_safe, address_path(address.id) %>
+                  </span>
+                </div>
+              </nav>
+            </div>
+          </article>
+        </div>
+      <% end %>
+  </div>
+  <% end %>
+
+  <div class='container'>
+    <span class="level-item" aria-label="nav buttons">
+      <%= link_to  '<i class="fas fa-campground" aria-hidden="true"></i>'.html_safe, new_user_address_path(current_user.id) %>
+      <%= link_to  '<i class="fas fa-sign-out-alt" aria-hidden="true"></i>'.html_safe, logout_path %>
+      <%= link_to  '<i class="fas fa-search" aria-hidden="true"></i>'.html_safe, listings_path %>    
+    </span>
+  </div>
+</section>

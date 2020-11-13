@@ -1,0 +1,46 @@
+<section class='hero'>
+  <div class='container'>
+    <div class='title'>
+      <h1>Tresspass</h1>
+    </div>
+    <div class='sub-title is-bold'>
+      <h1>New User Page</h1>
+    </div>
+  </div>
+
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class='container'>
+    <%= form_for @user do |f| %>
+    <div class='text'>
+    <%= f.label :username, "Username" %>
+    </div>
+    <div class='field'>
+    <%= f.text_field :username %>
+    </div>
+    <div class='text'>
+    <%= f.label :password, "Password" %>
+    </div>
+    <div class='field'>
+    <%= f.password_field :password %>
+    </div>
+    <div class='button'>
+    <%= f.submit 'Create Account'%>
+    <% end %>
+    </div>
+  </div>
+    <div class='container'>
+      <span class="level-item" aria-label="nav buttons">
+        <%= link_to  '<i class="fas fa-sign-in-alt" aria-hidden="true"></i>'.html_safe, login_path  %>
+        <%= link_to  '<i class="fas fa-sign-out-alt" aria-hidden="true"></i>'.html_safe, logout_path %>
+        <%= link_to  '<i class="fas fa-search" aria-hidden="true"></i>'.html_safe, listings_path %>
+      </span>
+  </div>
+</section>

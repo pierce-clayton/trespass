@@ -1,0 +1,75 @@
+<section class='hero'>
+  <div class='container'>
+    <div class='title'>
+      <h1>Tresspass</h1>
+    </div>
+    <div class='sub-title is-bold'>
+      <h1>New Listing</h1>
+    </div>
+  </div>
+
+  <% if @listing.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @listing.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class='container'>
+    <span>
+      <%= form_for @listing do |f| %>
+      <%= f.hidden_field :address_id, value: params[:address_id] %>
+      <%= f.hidden_field :user_id, value: params[:user_id] %>
+      <div class='text'>
+      <%= f.label :price, "Price" %>
+      </div>
+      <div class='field'>
+      <%= f.number_field :price %>
+      </div>
+      <div class='text'>
+      <%= f.label :avail_start, "Availability Begins" %>
+      </div>
+      <div class='field'>
+      <%= f.date_field :avail_start %>
+      </div>
+      <div class='text'>
+      <%= f.label :avail_end, "Availability Ends" %>
+      </div>
+      <div class='field'>
+      <%= f.date_field :avail_end %>
+      </div>
+      <div class='text'>
+      <%= f.label :description, "Availability details" %>
+      </div>
+      <div class='field'>
+      <%= f.text_area :description %>
+      </div>
+      <div class='text'>
+      <%= f.label :allowed_activities, "Permitted activities" %>
+      </div>
+      <div class='field'>
+      <%= f.text_area :allowed_activities %>
+      </div>
+      <div class='button'>
+      <%= f.submit 'Create listing'%>
+      <% end %>
+      </div>
+  </div>
+      <div class='container is-justify-content-left'>
+        <div class='text'><%= @address.propertyname %></div>
+        <div class='text'><%= @address.add_l1 %></div>
+        <% unless @address.add_l2.empty? %>
+        <div class='text'><%= @address.add_l2 %></div>
+        <% end %>
+        <div class='text'><%= @address.city %></div>
+        <div class='text'><%= @address.state %></div>
+        <div class='text'><%= @address.zip %></div>
+      </div>
+      </span>
+    <div class='button'>
+      <%= link_to  '<i class="fas fa-home" aria-hidden="false"></i>'.html_safe, current_user %>
+    </div>
+</section>
+

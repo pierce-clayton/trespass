@@ -1,0 +1,72 @@
+<section class='hero'>
+  <div class='container'>
+    <div class='title'>
+      <h1>Tresspass</h1>
+    </div>
+    <div class='sub-title is-bold'>
+      <h1>New Property for <strong><%= current_user.username %></strong></h1>
+    </div>
+  </div>
+  <div class='container'>
+    <% if @address.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+        <% @address.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+  <div class='container'>
+    <%= form_for @address do |f| %>
+    <%= f.hidden_field :user_id %>
+    
+    <div class='text'>
+    <%= f.label :propertyname, "Name of Property" %>
+    </div>
+    <div class='field'>
+    <%= f.text_field :propertyname %>
+    </div>
+    <div class='text'>
+    <%= f.label :add_l1, "Address" %>
+    </div>
+    <div class='field'>
+    <%= f.text_field :add_l1 %>
+    </div>
+    <div class='text'>
+    <%= f.label :add_l2, "Address line 2" %>
+    </div>
+    <div class='field'>
+    <%= f.text_field :add_l2 %>
+    </div>
+    <div class='text'>
+    <%= f.label :city, "City" %>
+    </div>
+    <div class='field'>
+    <%= f.text_field :city %>
+    </div>
+    <div class='text'>
+    <%= f.label :state, "State" %>
+    </div>
+    <div class='field'>
+    <%= f.text_field :state %>
+    </div>
+    <div class='text'>
+    <%= f.label :zip, "Zip Code" %>
+    </div>
+    <div class='field'>
+    <%= f.number_field :zip %>
+    </div>
+    <div class='button'>
+    <%= f.submit 'Add Property'%>
+    </div>
+    <% end %>
+  </div>
+  <div class='container'>
+    <span class="level-item" aria-label="nav buttons">
+      <%= link_to  '<i class="fas fa-sign-out-alt" aria-hidden="true"></i>'.html_safe, logout_path unless current_user.nil? %>
+      <%= link_to  '<i class="fas fa-home" aria-hidden="true"></i>'.html_safe, current_user unless current_user.nil? %>
+    </span>
+  </div>
+</section>

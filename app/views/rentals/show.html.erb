@@ -1,0 +1,37 @@
+<section class='hero'>
+  <div class='container'>
+    <div class='title'>
+      <h1>Tresspass</h1>
+    </div>
+    <div class='sub-title is-bold'>
+      <h1>Rental Details</h1>
+    </div>
+  </div>
+
+  <div class='container'>
+    <div class='text'><strong>Rental details</strong></div>
+    <div class='text'>Hosted by <strong><%= @rental.listing.address.user.username %></strong></div>
+    <div class='text'><%= @rental.listing.address.add_l1 %></div>
+    <div class='text'><%= @rental.listing.address&.add_l2 %></div>
+    <div class='text'><%= @rental.listing.address.city %></div>
+    <div class='text'><%= @rental.listing.address.state %></div>
+    <div class='text'><%= @rental.listing.address.zip %></div>
+    <br>
+    <div class='text'><strong>Description</strong></div>
+    <div class='text'><%= @rental.listing.description %></div>
+    <div class='text'><strong>Allowed Activities</strong></div>
+    <div class='text'><%= @rental.listing.allowed_activities %></div>
+    <div class='text'><strong>Number of people attending</strong> <%= @rental.souls %></div>
+    <div class='text'><strong>Number of vehicles</strong> <%= @rental.vehicles %></div>
+    <div class='text'><strong>Rental Start Date</strong> <%= @rental.start_date %></div>
+    <div class='text'><strong>Rental End Date</strong> <%= @rental.end_date %></div>
+    <div class='container'>
+        <span class="level-item" aria-label="nav buttons">
+          <%= link_to  '<i class="fas fa-newspaper" aria-hidden="true"></i>'.html_safe, listing_path(@rental.listing.id)  %>
+          <%= link_to  '<i class="fas fa-sign-out-alt" aria-hidden="true"></i>'.html_safe, logout_path unless current_user.nil? %>
+          <%= link_to  '<i class="fas fa-home" aria-hidden="true"></i>'.html_safe, current_user unless current_user.nil? %>
+          <%= link_to  '<i class="fas fa-search" aria-hidden="true"></i>'.html_safe, listings_path %>  
+        </span>
+      </div>
+  </div>
+</section>

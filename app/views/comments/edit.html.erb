@@ -1,0 +1,42 @@
+<section class='hero'>
+  <div class='container'>
+    <div class='title'>
+      <h1>Tresspass</h1>
+    </div>
+    <div class='sub-title is-bold'>
+      <h1>Edit Comment Page</h1>
+    </div>
+  </div>
+
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @comment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class='container'>
+    <%= form_for @comment do |f| %>
+    <%= f.hidden_field :listing_id, value: @comment.listing.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <div class='text'>
+    <%= f.label :description, "Comment: " %>
+    </div>
+    <div class='field'>
+    <%= f.text_area :description %>
+    </div>
+    <div class='button'>
+    <%= f.submit 'Create Comment'%>
+    <% end %>
+    </div>
+  </div>
+    <div class='container'>
+      <span class="level-item" aria-label="nav buttons">
+        <%= link_to  '<i class="fas fa-sign-in-alt" aria-hidden="true"></i>'.html_safe, login_path if current_user.nil? %>
+        <%= link_to  '<i class="fas fa-sign-out-alt" aria-hidden="true"></i>'.html_safe, logout_path unless current_user.nil? %>
+        <%= link_to  '<i class="fas fa-search" aria-hidden="true"></i>'.html_safe, listings_path %>
+      </span>
+  </div>
+</section>

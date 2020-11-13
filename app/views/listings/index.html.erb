@@ -1,0 +1,55 @@
+<section class='hero'>
+  <div class='container'>
+    <div class='title'>
+      <h1>Tresspass</h1>
+    </div>
+    <div class='sub-title is-bold'>
+      <h1>All Available Listings</h1>
+    </div>
+    <div class='container'>
+      <% @listings.each do |listing|%>
+      <div class="box">
+        <article class="media">
+          <div class="media-left">
+            <figure class="image is-64x64">
+              <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+            </figure>
+          </div>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong><%= listing.address.propertyname %></strong> <small><%= listing.address.city << ', ' << listing.address.state%></small>
+              </p>
+            </div>
+            <nav class="level is-mobile">
+              <div class="level-left">
+                <span class="level-item" aria-label="rent">
+                  <%= link_to '<i class="fas fa-credit-card" aria-hidden="true"></i>'.html_safe , {controller: :rentals, action: :new, user_id: listing.address.user.id, listing_id: listing.id} unless current_user.id == listing.address.user.id %>                  
+                </span>
+                <span class="level-item" aria-label="comment">
+                  <%= link_to  '<i class="fas fa-list" aria-hidden="true"></i>'.html_safe, listing_comments_path(listing.id) %>
+                </span>
+                <span class="level-item" aria-label="comment">
+                  <%= link_to  '<i class="fas fa-comments" aria-hidden="true"></i>'.html_safe, new_listing_comment_path(listing.id) unless !current_user.rentals.map(&:listing).include?(listing) || current_user.listings.include?(listing) %>
+                </span>
+                <span class="level-item" aria-label="comment">
+                  <%= link_to  '<i class="fas fa-newspaper" aria-hidden="true"></i>'.html_safe, listing_path(listing.id)  %>
+                </span>
+              </div>
+            </nav>
+          </div>
+        </article>
+      </div>
+      <% end %>
+    </div>
+      <div class='container'>
+        <span class="level-item" aria-label="nav buttons">
+          <%= link_to  '<i class="fas fa-user-plus" aria-hidden="true"></i>'.html_safe, new_user_path %>
+          <%= link_to  '<i class="fas fa-sign-in-alt" aria-hidden="true"></i>'.html_safe, login_path %>
+          <%= link_to  '<i class="fas fa-sign-out-alt" aria-hidden="true"></i>'.html_safe, logout_path %>
+          <%= link_to  '<i class="fas fa-home" aria-hidden="true"></i>'.html_safe, current_user %>
+          <%= link_to  '<i class="fas fa-campground" aria-hidden="true"></i>'.html_safe, new_user_address_path(current_user.id) unless current_user.nil? %>
+        </span>
+      </div>
+  </div>
+</section>
