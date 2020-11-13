@@ -1,4 +1,4 @@
-<section class='hero'>
+
   <div class='container'>
     <div class='title'>
       <h1>Tresspass</h1>
@@ -7,7 +7,7 @@
       <h1>New Listing</h1>
     </div>
   </div>
-
+  <div class='container'>
   <% if @listing.errors.any? %>
     <div id="error_explanation">
       <ul>
@@ -17,6 +17,7 @@
       </ul>
     </div>
   <% end %>
+  </div>
   <div class='container'>
     <span>
       <%= form_for @listing do |f| %>
@@ -56,7 +57,6 @@
       <%= f.submit 'Create listing'%>
       <% end %>
       </div>
-  </div>
       <div class='container is-justify-content-left'>
         <div class='text'><%= @address.propertyname %></div>
         <div class='text'><%= @address.add_l1 %></div>
@@ -71,5 +71,6 @@
     <div class='button'>
       <%= link_to  '<i class="fas fa-home" aria-hidden="false"></i>'.html_safe, current_user %>
     </div>
-</section>
+  </div>
+
 

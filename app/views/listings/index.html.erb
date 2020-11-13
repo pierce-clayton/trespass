@@ -1,4 +1,4 @@
-<section class='hero'>
+
   <div class='container'>
     <div class='title'>
       <h1>Tresspass</h1>
@@ -44,12 +44,11 @@
     </div>
       <div class='container'>
         <span class="level-item" aria-label="nav buttons">
-          <%= link_to  '<i class="fas fa-user-plus" aria-hidden="true"></i>'.html_safe, new_user_path %>
-          <%= link_to  '<i class="fas fa-sign-in-alt" aria-hidden="true"></i>'.html_safe, login_path %>
-          <%= link_to  '<i class="fas fa-sign-out-alt" aria-hidden="true"></i>'.html_safe, logout_path %>
-          <%= link_to  '<i class="fas fa-home" aria-hidden="true"></i>'.html_safe, current_user %>
+          <%= link_to  '<i class="fas fa-user-plus" aria-hidden="true"></i>'.html_safe, new_user_path if current_user.nil? %>
+          <%= link_to  '<i class="fas fa-sign-in-alt" aria-hidden="true"></i>'.html_safe, login_path if current_user.nil?  %>
+          <%= link_to  '<i class="fas fa-sign-out-alt" aria-hidden="true"></i>'.html_safe, logout_path unless current_user.nil? %>
+          <%= link_to  '<i class="fas fa-home" aria-hidden="true"></i>'.html_safe, current_user unless current_user.nil? %>
           <%= link_to  '<i class="fas fa-campground" aria-hidden="true"></i>'.html_safe, new_user_address_path(current_user.id) unless current_user.nil? %>
         </span>
       </div>
   </div>
-</section>

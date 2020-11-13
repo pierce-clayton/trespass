@@ -1,28 +1,26 @@
-<section class='hero'>
-  <div class='container'>
-    <div class='title'>
-      <h1>Tresspass</h1>
-    </div>
-    <div class='sub-title is-bold'>
-      <h1><strong><%= @address.propertyname %></strong></h1>
-    </div>
+<div class='container'>
+  <div class='title'>
+    <h1>Tresspass</h1>
   </div>
-  <div class='container'>
-    <div><strong>Address</strong></div>
-    <div><%= @address.add_l1 %></div>
-    <% unless @address.add_l2.empty? %>
+  <div class='sub-title is-bold'>
+    <h1><strong><%= @address.propertyname %></strong></h1>
+  </div>
+</div>
+<div class='container'>
+  <div><strong>Address</strong></div>
+  <div><%= @address.add_l1 %></div>
+  <% unless @address.add_l2.empty? %>
     <div><%= @address.add_l2 %></div>
-    <% end %>
-    <div><%= @address.city %></div>
-    <div><%= @address.state %></div>
-    <div><%= @address.zip %></div>
-  </div>
-  <div class='container'>
-    <span class="level-item" aria-label="nav buttons">
-      <%= link_to  '<i class="fas fa-home" aria-hidden="true"></i>'.html_safe, current_user unless current_user.nil? %>
-      <%= link_to  '<i class="fas fa-campground" aria-hidden="true"></i>'.html_safe, new_user_address_path(current_user.id) %>
-      <%= link_to  '<i class="fas fa-sign-out-alt" aria-hidden="true"></i>'.html_safe, logout_path %>
-      <%= link_to  '<i class="fas fa-search" aria-hidden="true"></i>'.html_safe, listings_path %>    
-    </span>
-  </div>
-</section>
+  <% end %>
+  <div><%= @address.city %></div>
+  <div><%= @address.state %></div>
+  <div><%= @address.zip %></div>
+</div>
+<div class='container'>
+  <span class="level-item" aria-label="nav buttons">
+    <%= link_to  '<i class="fas fa-home" aria-hidden="true"></i>'.html_safe, current_user unless current_user.nil? %>
+    <%= link_to  '<i class="fas fa-campground" aria-hidden="true"></i>'.html_safe, new_user_address_path(current_user.id) %>
+    <%= link_to  '<i class="fas fa-sign-out-alt" aria-hidden="true"></i>'.html_safe, logout_path %>
+    <%= link_to  '<i class="fas fa-search" aria-hidden="true"></i>'.html_safe, listings_path %>
+  </span>
+</div>

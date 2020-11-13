@@ -1,5 +1,6 @@
-<section class='hero'>
-  <div class='container'>
+
+<div class='hero-head'>
+  <div class='container has-text-centered'>
     <div class='title'>
       <h1>Tresspass</h1>
     </div>
@@ -7,8 +8,10 @@
       <h1><%= @user.username %>'s profile page</h1>      
     </div>
   </div>
+</div>
+<div class='hero-body'>
   <% if @user.rentals.any? %>
-  <div class='container'>
+  <div class='container has-text-centered'>
     <div class='sub-title'>
       <h3><strong>Previous Rentals</strong></h3>
     </div>
@@ -49,7 +52,7 @@
   <% end %>
 
   <% if @user.addresses.any? %>
-  <div class='container'>
+  <div class='container has-text-centered'>
     <div class='sub-title'>
       <h3><strong>Current properties</strong></h3>
     </div>
@@ -88,12 +91,15 @@
       <% end %>
   </div>
   <% end %>
-
-  <div class='container'>
-    <span class="level-item" aria-label="nav buttons">
-      <%= link_to  '<i class="fas fa-campground" aria-hidden="true"></i>'.html_safe, new_user_address_path(current_user.id) %>
-      <%= link_to  '<i class="fas fa-sign-out-alt" aria-hidden="true"></i>'.html_safe, logout_path %>
-      <%= link_to  '<i class="fas fa-search" aria-hidden="true"></i>'.html_safe, listings_path %>    
-    </span>
-  </div>
-</section>
+</div>
+<div class='hero-foot'>
+  <nav class='tabs'>
+    <div class='container'>
+      <span class="level-item" aria-label="nav buttons">
+        <%= link_to  '<i class="fas fa-campground" aria-hidden="true"></i>'.html_safe, new_user_address_path(current_user.id) %>
+        <%= link_to  '<i class="fas fa-sign-out-alt" aria-hidden="true"></i>'.html_safe, logout_path %>
+        <%= link_to  '<i class="fas fa-search" aria-hidden="true"></i>'.html_safe, listings_path %>    
+      </span>
+    </div>
+  </nav>
+</div>

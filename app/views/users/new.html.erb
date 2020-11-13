@@ -1,5 +1,5 @@
-<section class='hero'>
-  <div class='container'>
+<div class='hero-head'>
+  <div class='container has-text-centered'>
     <div class='title'>
       <h1>Tresspass</h1>
     </div>
@@ -7,7 +7,8 @@
       <h1>New User Page</h1>
     </div>
   </div>
-
+</div>
+<div class='hero-body'>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <ul>
@@ -17,7 +18,7 @@
       </ul>
     </div>
   <% end %>
-  <div class='container'>
+  <div class='container has-text-centered'>
     <%= form_for @user do |f| %>
     <div class='text'>
     <%= f.label :username, "Username" %>
@@ -36,11 +37,13 @@
     <% end %>
     </div>
   </div>
+</div>
+<div class='hero-foot'>
     <div class='container'>
       <span class="level-item" aria-label="nav buttons">
-        <%= link_to  '<i class="fas fa-sign-in-alt" aria-hidden="true"></i>'.html_safe, login_path  %>
-        <%= link_to  '<i class="fas fa-sign-out-alt" aria-hidden="true"></i>'.html_safe, logout_path %>
+        <%= link_to  '<i class="fas fa-sign-in-alt" aria-hidden="true"></i>'.html_safe, login_path if current_user.nil? %>
+        <%= link_to  '<i class="fas fa-sign-out-alt" aria-hidden="true"></i>'.html_safe, logout_path unless current_user.nil? %>
         <%= link_to  '<i class="fas fa-search" aria-hidden="true"></i>'.html_safe, listings_path %>
       </span>
   </div>
-</section>
+</div>

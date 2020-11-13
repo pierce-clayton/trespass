@@ -1,14 +1,16 @@
-<section class='hero is-large is-bold is-full-height'>
-  <div class='container'>
+<div class='hero-head'>
+  <div class='container has-text-centered'>
     <h1 class='title'>
       Tresspass
     </h1>  
   </div>
-  <div class="container">
+  <div class="container has-text-centered">
     <h2 class="sub-title is-bold">Please Log In</h2>
   </div>
+</div>
+<div class='hero-body'>
     <p><%= @error %></p>
-  <div class='container'>
+  <div class='container has-text-centered'>
   <%= form_for :user, url: '/login' do |f| %>
   <div class="text">
   Username: 
@@ -27,11 +29,13 @@
   </div>
   <% end %>
   </div>
+</div>
+<div class='hero-footer'>
   <div class='container'>
     <span class="level-item" aria-label="nav buttons">
-      <%= link_to  '<i class="fas fa-user-plus" aria-hidden="true"></i>'.html_safe, new_user_path %>
-      <%= link_to  '<i class="fas fa-sign-out-alt" aria-hidden="true"></i>'.html_safe, logout_path %>
+      <%= link_to  '<i class="fas fa-user-plus" aria-hidden="true"></i>'.html_safe, new_user_path if current_user.nil? %>
+      <%= link_to  '<i class="fas fa-sign-out-alt" aria-hidden="true"></i>'.html_safe, logout_path unless current_user.nil? %>
       <%= link_to  '<i class="fas fa-search" aria-hidden="true"></i>'.html_safe, listings_path %>
     </span>
   </div>
-</section>
+</div>
