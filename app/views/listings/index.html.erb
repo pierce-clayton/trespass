@@ -27,13 +27,13 @@
           <nav class="level is-mobile">
             <div class="level-left">
               <span class="level-item" aria-label="rent">
-                <%= link_to '<i class="fas fa-credit-card" aria-hidden="true"></i>'.html_safe , {controller: :rentals, action: :new, user_id: listing.address.user.id, listing_id: listing.id} unless current_user.id == listing.address.user.id %>                  
+                <%= link_to '<i class="fas fa-credit-card" aria-hidden="true"></i>'.html_safe , {controller: :rentals, action: :new, user_id: listing.address.user.id, listing_id: listing.id} unless current_user&.id == listing&.address&.user&.id || current_user.nil? %>                  
               </span>
               <span class="level-item" aria-label="comment">
                 <%= link_to  '<i class="fas fa-list" aria-hidden="true"></i>'.html_safe, listing_comments_path(listing.id) %>
               </span>
               <span class="level-item" aria-label="comment">
-                <%= link_to  '<i class="fas fa-comments" aria-hidden="true"></i>'.html_safe, new_listing_comment_path(listing.id) unless !current_user.rentals.map(&:listing).include?(listing) || current_user.listings.include?(listing) %>
+                <%= link_to  '<i class="fas fa-comments" aria-hidden="true"></i>'.html_safe, new_listing_comment_path(listing.id) unless !current_user&.rentals&.map(&:listing)&.include?(listing) || current_user&.listings&.include?(listing) %>
               </span>
               <span class="level-item" aria-label="comment">
                 <%= link_to  '<i class="fas fa-newspaper" aria-hidden="true"></i>'.html_safe, listing_path(listing.id)  %>

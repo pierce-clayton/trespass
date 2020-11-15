@@ -39,11 +39,13 @@
   </div>
 </div>
 <div class='hero-foot'>
+  <nav class='tabs'>
     <div class='container'>
       <span class="level-item" aria-label="nav buttons">
         <%= link_to  '<i class="fas fa-sign-in-alt" aria-hidden="true"></i>'.html_safe, login_path if current_user.nil? %>
         <%= link_to  '<i class="fas fa-sign-out-alt" aria-hidden="true"></i>'.html_safe, logout_path unless current_user.nil? %>
         <%= link_to  '<i class="fas fa-search" aria-hidden="true"></i>'.html_safe, listings_path %>
       </span>
-  </div>
+    </div>
+  </nav>
 </div>

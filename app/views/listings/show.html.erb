@@ -39,12 +39,12 @@
     <div class='container'>
       <span class="level-item" aria-label="nav buttons">
         <%= link_to  '<i class="fas fa-list" aria-hidden="true"></i>'.html_safe, listing_comments_path(@listing.id) %>
-        <%= link_to  '<i class="fas fa-comments" aria-hidden="true"></i>'.html_safe, new_listing_comment_path(@listing.id) unless !current_user.rentals.map(&:listing).include?(@listing) || current_user.listings.include?(@listing) %>
+        <%= link_to  '<i class="fas fa-comments" aria-hidden="true"></i>'.html_safe, new_listing_comment_path(@listing.id) unless !current_user&.rentals&.map(&:listing)&.include?(@listing) || current_user&.listings&.include?(@listing) || current_user.nil? %>
         <%= link_to  '<i class="fas fa-user-plus" aria-hidden="true"></i>'.html_safe, new_user_path if current_user.nil? %>
         <%= link_to  '<i class="fas fa-sign-in-alt" aria-hidden="true"></i>'.html_safe, login_path if current_user.nil? %>
         <%= link_to  '<i class="fas fa-sign-out-alt" aria-hidden="true"></i>'.html_safe, logout_path unless current_user.nil? %>
         <%= link_to  '<i class="fas fa-home" aria-hidden="true"></i>'.html_safe, current_user unless current_user.nil? %>
-        <%= link_to '<i class="fas fa-credit-card" aria-hidden="true"></i>'.html_safe, {controller: :rentals, action: :new, user_id: @listing.address.user.id, listing_id: @listing.id} unless current_user.id == @listing.address.user.id %>
+        <%= link_to '<i class="fas fa-credit-card" aria-hidden="true"></i>'.html_safe, {controller: :rentals, action: :new, user_id: @listing.address.user.id, listing_id: @listing.id} unless current_user&.id == @listing.address.user.id || current_user.nil?%>
       </span>
     </div>
   </nav>

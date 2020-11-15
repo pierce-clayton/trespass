@@ -31,10 +31,10 @@
             <nav class="level is-mobile">
               <div class="level-left">
                 <span class="level-item" aria-label="rent">
-                <%= link_to  '<i class="fas fa-edit" aria-hidden="true"></i>'.html_safe, edit_comment_path(comment.id) unless !current_user.rentals.map(&:listing).include?(comment.listing) || current_user.listings.include?(comment.listing) %>
+                <%= link_to  '<i class="fas fa-edit" aria-hidden="true"></i>'.html_safe, edit_comment_path(comment.id) unless !current_user&.rentals&.map(&:listing)&.include?(comment.listing) || current_user&.listings&.include?(comment.listing) || current_user.nil? %>
                 </span>
                 <span class="level-item" aria-label="comment">
-                  <%= link_to  '<i class="fas fa-trash-alt" aria-hidden="true"></i>'.html_safe, comment_path(comment.id), method: :delete  unless !current_user.rentals.map(&:listing).include?(comment.listing) || current_user.listings.include?(comment.listing)%>  
+                  <%= link_to  '<i class="fas fa-trash-alt" aria-hidden="true"></i>'.html_safe, comment_path(comment.id), method: :delete  unless !current_user&.rentals&.map(&:listing)&.include?(comment.listing) || current_user&.listings&.include?(comment.listing) || current_user.nil?%>  
                 </span>
               </div>
             </nav>
