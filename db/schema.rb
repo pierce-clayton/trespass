@@ -12,9 +12,12 @@
 
 ActiveRecord::Schema.define(version: 2020_11_10_193339) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "addresses", force: :cascade do |t|
     t.string "propertyname"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "add_l1"
     t.string "add_l2"
     t.string "city"
@@ -27,8 +30,8 @@ ActiveRecord::Schema.define(version: 2020_11_10_193339) do
 
   create_table "comments", force: :cascade do |t|
     t.string "description"
-    t.integer "user_id"
-    t.integer "listing_id"
+    t.bigint "user_id"
+    t.bigint "listing_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["listing_id"], name: "index_comments_on_listing_id"
@@ -41,7 +44,7 @@ ActiveRecord::Schema.define(version: 2020_11_10_193339) do
     t.date "avail_end"
     t.string "description"
     t.string "allowed_activities"
-    t.integer "address_id", null: false
+    t.bigint "address_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["address_id"], name: "index_listings_on_address_id"
@@ -52,8 +55,8 @@ ActiveRecord::Schema.define(version: 2020_11_10_193339) do
     t.date "end_date"
     t.integer "souls"
     t.integer "vehicles"
-    t.integer "user_id", null: false
-    t.integer "listing_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "listing_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["listing_id"], name: "index_rentals_on_listing_id"
