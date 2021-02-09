@@ -14,7 +14,6 @@
  *= require_self
  */
 
-@import 'bulma';
 .header-image {
     background-image: url("http://orig14.deviantart.net/7584/f/2015/181/2/7/flat_mountains_landscape_by_ggiuliafilippini-d8zdbco.jpg");
     background-position: center center;
