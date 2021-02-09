@@ -23,3 +23,5 @@ test:
 production:
   <<: *default
   database: trespass_production
+  username: trespass
+  password: <%= ENV['TRESPASS_DATABASE_PASSWORD'] %>
